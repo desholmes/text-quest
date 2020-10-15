@@ -1,0 +1,24 @@
+block variables
+
+doctype html
+html(lang='en')
+  head
+    block head
+
+    block title
+      title ::: text quest ::::
+      meta(charset="utf-8")
+      meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
+      meta(name="viewport", content="width=device-width, initial-scale=1")
+
+      link(href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css",rel="stylesheet")
+      link(href="/css/text-quest-v0.1.0.css", rel="stylesheet")
+
+  body(class="body")
+  
+    main(id="terminal")
+  
+    a(class="github-fork-ribbon right-top hide", href="https://github.com/desholmes/text-quest", data-ribbon="Fork me on GitHub", title="Fork me on GitHub") Fork me on GitHub
+
+    block scripts
+    script(src="/js/text-quest-v0.1.0.js", type="text/javascript")

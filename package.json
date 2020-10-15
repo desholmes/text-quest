@@ -1,0 +1,36 @@
+{
+  "name": "text-quest",
+  "version": "0.1.0",
+  "description": "Text Quest: Unlock your imagination.",
+  "repository": "https://github.com/desholmes/text-quest",
+  "scripts": {
+    "start": "gulp dev",
+    "build": "gulp build",
+    "serve": "node server.js",
+    "deploy": "gulp deploy"
+  },
+  "author": "Des Holmes https://github.com/desholmes",
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "del": "^5.1.0",
+    "dotenv": "^8.2.0",
+    "gulp": "^4.0.2",
+    "gulp-async-replace": "^1.0.0",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-buffer": "0.0.2",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-contrib-copy": "^0.1.3",
+    "gulp-if": "^3.0.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-pug": "^4.0.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-terser": "^1.4.0",
+    "gulp-uglify": "^3.0.2",
+    "termly.js": "^2.5.6"
+  },
+  "dependencies": {}
+}

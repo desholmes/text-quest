@@ -1,0 +1,40 @@
+html, 
+body {
+    height: 100%;
+}
+body {
+    padding: 0;
+    margin: 0;
+    min-height: 100%;
+    overscroll-behavior: none;
+    background-color: #222222;
+    user-select: none;
+}
+
+.hide {
+    display: none;
+}
+
+#terminal {
+    height: 100%;
+    width: 90%;
+    & * {
+        font-size: 1.5rem;
+    }
+}
+
+.logo {
+    line-height: 0.6rem;
+}
+
+
+.power-unlocked {
+    animation: power-ani 0.6s 4;
+    color: #37debc;
+}
+
+@keyframes power-ani {
+    0% { color: #37debc; }
+    50% { color: #2778ae; }
+    100% { color: #37debc; }
+  }
