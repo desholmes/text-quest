@@ -44,6 +44,7 @@ const TextQuest = () => {
     );
     term.output(divider);
     term.output(game.game.intro);
+    track("search", "questWelcome");
   };
 
   /**
@@ -210,8 +211,10 @@ const TextQuest = () => {
         getBlockState(game.player.block),
         game.player.block
       );
+
+      track("search", game.player.block);
+
       if (newBlock.hasOwnProperty("auto-actions")) {
-        console.log(`move: block has auto actions`);
         processActions(newBlock["auto-actions"]);
       }
     } else {
@@ -232,8 +235,10 @@ const TextQuest = () => {
     if (blockAction !== false) {
       processActions(blockAction.actions);
       term.output(`<p>You take the ${item}.</p>`);
+      track("search", `took-${item}`);
     } else {
       term.output(`<p>You can't take that.</p>`);
+      track("search", `cantTake-${item}`);
     }
   };
 
@@ -243,12 +248,15 @@ const TextQuest = () => {
 
     if (!bagContainsItem(blockAction.bag)) {
       term.output(`<p>You don't have ${item}.</p>`);
+      track("search", `useDontHave-${item}`);
     } else {
       if (blockAction !== false) {
         processActions(blockAction.actions);
         term.output(`<p>${blockAction.description}`);
+        track("search", `use-${item}`);
       } else {
         term.output(`<p>You can't use that.</p>`);
+        track("search", `cantUse-${item}`);
       }
     }
   };
@@ -268,6 +276,7 @@ const TextQuest = () => {
   const completeQuest = () => {
     const commandDom = document.querySelector(".command");
     commandDom.style.display = "none";
+    track("search", "questComplete");
   };
 
   const addItemToBag = (itemArray) => {
@@ -314,6 +323,7 @@ const TextQuest = () => {
   const newPowerUnlocked = (power) => {
     term.output(`<h1 class="power-unlocked">New power unlocked: ${power}</h1>`);
     term.output(divider);
+    track("search", `newPowerUnlocked--${power}`);
   };
 
   const isPowerKnown = (power) => {
@@ -333,6 +343,16 @@ const TextQuest = () => {
     term = instance;
   };
 
+  const track = (type, value) => {
+    if (window.gtag) {
+      if (type === "search") {
+        window.gtag("event", "search", {
+          search_term: value,
+        });
+      }
+    }
+  };
+
   return {
     // static
     logo: logo,
@@ -347,8 +367,9 @@ const TextQuest = () => {
     use: use,
     // getters and setters
     setTerm: setTerm,
-    // init
+    // init and utils
     start: start,
+    track: track,
   };
 };
 
@@ -401,9 +422,36 @@ const init = () => {
   });
   terminal.commands = commands;
 
-  // terminal.onInput((command, parameters) => {
-  //   console.info("⚡onInput", command, parameters);
-  // });
+  terminal.DOM.command.addEventListener(
+    "keydown",
+    (e) => {
+      // up arrow
+      if (e.keyCode === 38) {
+        tq.track("search", "up-arrow");
+        // down arrow
+      } else if (e.keyCode === 40) {
+        tq.track("search", "down-arrow");
+        // enter
+      } else if (e.keyCode === 13) {
+        let inputCommands;
+        let firstCommand;
+        let commandsString;
+        if (terminal.DOM.input.value.includes(" ")) {
+          inputCommands = terminal.DOM.input.value.split(" ");
+          firstCommand = commands[0];
+          commandsString = commands.join("-");
+        } else {
+          inputCommands = terminal.DOM.input.value;
+          firstCommand = commandsString = inputCommands;
+        }
+        const prefix = !commands.hasOwnProperty(firstCommand)
+          ? "commandUnknown"
+          : "commandKnown";
+        tq.track("search", `${prefix}--${commandsString}`);
+      }
+    },
+    true
+  );
 
   tq.setTerm(terminal);
   tq.start();
@@ -419,7 +467,6 @@ const init = () => {
 
   // show the 'fork me' banner if we're not on local host
   if (window.location.hostname !== "localhost") {
-    console.log(`show banner ${window.location.hostname}`);
     document.querySelector(".github-fork-ribbon").classList.remove("hide");
   }
 };
