@@ -421,6 +421,8 @@ const init = () => {
     separator: ": ",
   });
   terminal.commands = commands;
+  //autocapitalize=off for mobile
+  terminal.DOM.input.setAttribute("autocapitalize","off");
 
   terminal.DOM.command.addEventListener(
     "keydown",
