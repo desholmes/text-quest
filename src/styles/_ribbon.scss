@@ -1,0 +1,21 @@
+.github-fork-ribbon {
+  position: fixed;
+  top: -6px;
+  right: -6px;
+  font-size: 0.77rem;
+
+  &.mobile-hide {
+    display: none;
+  }
+
+  /* Tablet */
+  @media only screen and (min-width: $width--tablet-min) {
+    top: 0;
+    right: 0;
+    font-size: 1rem;
+    
+    &.mobile-hide {
+      display: block;
+    }
+  }
+}

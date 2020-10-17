@@ -417,7 +417,7 @@ const init = () => {
   const terminal = new VanillaTerminal({
     container: "terminal",
     welcome: null,
-    prompt: "Sleepy traveller",
+    prompt: "Traveller",
     separator: ": ",
   });
   terminal.commands = commands;
@@ -448,6 +448,8 @@ const init = () => {
           ? "commandUnknown"
           : "commandKnown";
         tq.track("search", `${prefix}--${commandsString}`);
+        // hide the ribbon if people are using the app on mobile
+        document.querySelector(".github-fork-ribbon").classList.add("mobile-hide");
       }
     },
     true
