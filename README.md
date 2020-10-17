@@ -93,8 +93,3 @@ This project currently uses:
     1. Game yaml validator
 1. Create a supporting website with docs and links to games
 1. Online game editor (visual, or text based)
-
-### Mobile
-
-1. Styling and testing
-1. Commands to lowercase (map capitalised variations?)
