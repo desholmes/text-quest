@@ -10,6 +10,8 @@ player:
   block: entrance
   bag:
   powers:
+  blockHistory:
+  commandsEntered:
 
 powers:
   help:
