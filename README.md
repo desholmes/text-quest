@@ -84,8 +84,6 @@ This project currently uses:
 
 ### General
 
-1. Quest completion:
-    1. Show stats (Number of powers, time taken, commands used)
 1. Introduce `characters` as a concept (and associated `powers`
 1. Cross over with voice activation project
 1. Upload/point to yaml URL

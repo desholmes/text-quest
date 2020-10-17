@@ -36,8 +36,14 @@ const TextQuest = () => {
   ${logo}
   ${divider}
   <p>(Type commands to complete your quest)</p>`;
+  const stats = {
+    startTime: 0,
+    endTime: 0,
+    commandsEntered: 0,
+  };
 
   const start = () => {
+    stats.startTime = new Date().getTime();
     term.output(welcome);
     term.output(
       `<h1>Quest: ${game.game.name} (v${game.game.version} by ${game.game.author})</h1>`
@@ -45,6 +51,8 @@ const TextQuest = () => {
     term.output(divider);
     term.output(game.game.intro);
     track("search", "questWelcome");
+    game.player.blockHistory = [];
+    game.player.blockHistory.push(game.player.block);
   };
 
   /**
@@ -105,6 +113,33 @@ const TextQuest = () => {
   /**
       Helpers
    */
+
+  const toMinsAndSecs = (mills) => {
+    const minutes = Math.floor(mills / 60000);
+    const seconds = ((mills % 60000) / 1000).toFixed(0);
+    return seconds == 60
+      ? minutes + 1 + "m 00s"
+      : minutes + "m " + (seconds < 10 ? "0" : "") + seconds + "s";
+  };
+
+  const getStats = () => {
+    let playerPowersCount, timeTaken;
+
+    const endTime = new Date().getTime();
+    timeTaken = toMinsAndSecs(endTime - stats.startTime);
+
+    playerPowersCount =
+      (game.player.powers && Array.isArray(game.player.powers))
+        ? game.player.powers.length
+        : 0;
+
+    term.output(`${divider}
+                  <h1>Game Stats</h1>
+                  ${indent} Time taken: ${timeTaken}<br>
+                  ${indent} Commands entered: ${stats.commandsEntered}<br>
+                  ${indent} Powers unlocked: ${playerPowersCount}/${Object.keys(game.powers).length}
+                  ${indent} Blocks visited: ${[...new Set(game.player.blockHistory)].length}/${Object.keys(game.blocks).length}`);
+  };
 
   const bagContainsItem = (item) => {
     if (Array.isArray(game.player.bag)) {
@@ -212,8 +247,9 @@ const TextQuest = () => {
         game.player.block
       );
 
-      track("search", game.player.block);
+      game.player.blockHistory.push(game.player.block);
 
+      track("search", game.player.block);
       if (newBlock.hasOwnProperty("auto-actions")) {
         processActions(newBlock["auto-actions"]);
       }
@@ -274,6 +310,7 @@ const TextQuest = () => {
   */
 
   const completeQuest = () => {
+    getStats();
     const commandDom = document.querySelector(".command");
     commandDom.style.display = "none";
     track("search", "questComplete");
@@ -353,6 +390,10 @@ const TextQuest = () => {
     }
   };
 
+  const bumpCommandsEntered = () => {
+    game.player.commandsEntered += 1;
+  };
+
   return {
     // static
     logo: logo,
@@ -370,6 +411,7 @@ const TextQuest = () => {
     // init and utils
     start: start,
     track: track,
+    bumpCommandsEntered: bumpCommandsEntered,
   };
 };
 
@@ -422,7 +464,7 @@ const init = () => {
   });
   terminal.commands = commands;
   //autocapitalize=off for mobile
-  terminal.DOM.input.setAttribute("autocapitalize","off");
+  terminal.DOM.input.setAttribute("autocapitalize", "off");
 
   terminal.DOM.command.addEventListener(
     "keydown",
@@ -440,8 +482,8 @@ const init = () => {
         let commandsString;
         if (terminal.DOM.input.value.includes(" ")) {
           inputCommands = terminal.DOM.input.value.split(" ");
-          firstCommand = commands[0];
-          commandsString = commands.join("-");
+          firstCommand = inputCommands[0];
+          commandsString = inputCommands.join("-");
         } else {
           inputCommands = terminal.DOM.input.value;
           firstCommand = commandsString = inputCommands;
@@ -450,8 +492,12 @@ const init = () => {
           ? "commandUnknown"
           : "commandKnown";
         tq.track("search", `${prefix}--${commandsString}`);
-        // hide the ribbon if people are using the app on mobile
-        document.querySelector(".github-fork-ribbon").classList.add("mobile-hide");
+        // bump to commands entered stat
+        tq.bumpCommandsEntered();
+        // hide the ribbon on mobile
+        document
+          .querySelector(".github-fork-ribbon")
+          .classList.add("mobile-hide");
       }
     },
     true
