@@ -1,7 +1,7 @@
 const game = {
   game: {
     name: "The Sleepy Traveller",
-    version: 1.1,
+    version: 1.2,
     description: "Use commands to help the sleepy traveller escape",
     author: '<a href="https://github.com/desholmes">Des Holmes</a>',
     intro:
@@ -145,7 +145,7 @@ const game = {
         default: {
           name: "Grand Hall",
           description:
-            '<p>You\'re standing in vast hall. The long, well dressed table is full of delicious-looking food. A voice from the back of the room booms</p><h1>"There you are my boy! Sit down, sit down. The food is getting cold."</h1><p>Your quest is complete!</p>',
+            '<p>You\'re standing in a vast hall. The long, well dressed table is full of delicious-looking food. A voice from the back of the room booms:</p><h1>"There you are my boy! Sit down, sit down. The food is getting cold."</h1><p>Your quest is complete!</p>',
           "auto-actions": [{ completeQuest: null }],
         },
       },

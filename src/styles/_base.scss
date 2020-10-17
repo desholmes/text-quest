@@ -1,0 +1,17 @@
+html, 
+body {
+    height: 100%;
+}
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    overscroll-behavior: none;
+    background-color: $colour--midnight-grey;
+    user-select: none;
+}
+
+.hide {
+    display: none;
+}

@@ -1,0 +1,65 @@
+#terminal {
+  height: 100%;
+  width: 100%;
+
+  & * {
+    font-size: 1.1rem;
+    line-height: 1.4rem;
+  }
+
+  .logo {
+    font-size: 0.6rem;
+    line-height: 0.3rem;
+  }
+
+  .container output {
+    .power-unlocked {
+        animation: power-ani 0.6s 4;
+        color: #37debc;
+    }
+  }
+
+  .command {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    .prompt {
+      margin: 0;
+    }
+    .input {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      line-height: 1rem !important;
+    }
+  }
+
+  /* Tablet */
+  @media only screen and (min-width: $width--tablet-min) {
+    width: 90%;
+    & * {
+      font-size: 1.5rem;
+      line-height: 1.7rem;
+    }
+    .logo {
+      font-size: 1.2rem;
+      line-height: 0.5rem;
+      -webkit-font-smooth: subpixel-antialiased;
+    }
+    .command {
+      margin-top: 2.5rem;
+    }
+  }
+}
+
+@keyframes power-ani {
+  0% {
+    color: #37debc;
+  }
+  50% {
+    color: #2778ae;
+  }
+  100% {
+    color: #37debc;
+  }
+}
