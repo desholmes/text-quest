@@ -1,0 +1,28 @@
+$trans: transparent;
+$block: #fff;
+$line: #ccc;
+$gridSize: 100px;
+$subdivisions: 1;
+$lineAlpha: 0;
+$sublineAlpha: 1;
+
+body.paper {
+  background-color: $block;
+  background-image: linear-gradient(rgba($line, $sublineAlpha) 1px, $trans 1px),
+    /*sub horiz*/ linear-gradient($line 1px, $trans 1px),
+    /*main horiz*/
+      linear-gradient(90deg, rgba($line, $sublineAlpha) 1px, $trans 1px),
+    /*sub vert*/ linear-gradient(90deg, rgba($line, $lineAlpha) 1px, $trans 1px),
+    /*main vert*/
+      linear-gradient(
+        90deg,
+        rgba($line, $lineAlpha) 3px,
+        $trans 3px,
+        $trans $gridSize - 2,
+        rgba($line, $lineAlpha) $gridSize - 2
+      )
+      /*nub vert*/;
+  background-size: $gridSize / $subdivisions $gridSize / $subdivisions,
+    $gridSize $gridSize, $gridSize / $subdivisions $gridSize / $subdivisions,
+    $gridSize $gridSize, $gridSize $gridSize;
+}

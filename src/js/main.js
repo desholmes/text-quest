@@ -137,7 +137,7 @@ const TextQuest = () => {
                   <h1>Game Stats</h1>
                   ${indent} Time taken: ${timeTaken}<br>
                   ${indent} Commands entered: ${stats.commandsEntered}<br>
-                  ${indent} Powers unlocked: ${playerPowersCount}/${Object.keys(game.powers).length}
+                  ${indent} Powers unlocked: ${playerPowersCount}/${Object.keys(game.powers).length}<br>
                   ${indent} Blocks visited: ${[...new Set(game.player.blockHistory)].length}/${Object.keys(game.blocks).length}`);
   };
 
@@ -391,7 +391,7 @@ const TextQuest = () => {
   };
 
   const bumpCommandsEntered = () => {
-    game.player.commandsEntered += 1;
+    stats.commandsEntered += 1;
   };
 
   return {
