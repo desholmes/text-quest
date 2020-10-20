@@ -13,7 +13,6 @@ const game = {
     bag: null,
     powers: null,
     blockHistory: null,
-    commandsEntered: null,
   },
   powers: {
     help: { description: "help: Lists your powers and any hints." },

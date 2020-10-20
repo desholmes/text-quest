@@ -25,7 +25,7 @@ const options = {
 const config = {
   js: ["./src/js/**/*.js"],
   sass: "./src/styles/**/*.scss",
-  assets: "./src/assets/*",
+  images: "./src/images/*",
   views: [
     "./src/views/**/*.pug",
     "!./src/views/master.pug",
@@ -37,7 +37,7 @@ const config = {
   },
   dist: {
     base: "./dist/",
-    assets: "./dist/assets",
+    images: "./dist/images",
     css: "./dist/css/",
     js: "./dist/js/",
   },
@@ -111,16 +111,16 @@ gulp.task("html", () => {
 });
 
 // Copies
-gulp.task("copy:assets", (done) => {
+gulp.task("copy:images", (done) => {
   //files
-  gulp.src(config.assets).pipe(copy()).pipe(gulp.dest(config.dist.assets));
+  gulp.src(config.images).pipe(copy()).pipe(gulp.dest(config.dist.images));
 
   done();
 });
 
 // gulp.task("copy:fonts", (done) => {
 //   //files
-//   gulp.src("./src/fonts/*").pipe(copy()).pipe(gulp.dest("./dist/assets/fonts"));
+//   gulp.src("./src/fonts/*").pipe(copy()).pipe(gulp.dest("./dist/images/fonts"));
 
 //   done();
 // });
@@ -175,7 +175,7 @@ gulp.task("clean", (done) => {
 // Bundle process
 gulp.task(
   "copy",
-  gulp.series("copy:assets") //, "copy:fonts", "copy:css", "copy:js")
+  gulp.series("copy:images") //, "copy:fonts", "copy:css", "copy:js")
 );
 
 gulp.task(
