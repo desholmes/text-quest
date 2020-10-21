@@ -8,8 +8,14 @@
   }
 
   .logo {
-    font-size: 0.6rem;
+
+    font-size: 0.56rem;
     line-height: 0.3rem;
+
+    /* Tablet */
+    @media only screen and (min-width: $width--tablet-min) {
+      font-size: 0.6rem;
+    }
   }
 
   .container output {
