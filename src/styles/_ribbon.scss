@@ -1,8 +1,12 @@
 .github-fork-ribbon {
   position: fixed;
-  top: -6px;
-  right: -6px;
+  top: -30px;
+  right: -30px;
   font-size: 0.77rem;
+
+  &::after {
+    content: "GitHub";
+  }
 
   &.mobile-hide {
     display: none;
@@ -14,6 +18,10 @@
     right: 0;
     font-size: 1rem;
     
+    &::after {
+      content: "Fork me on GitHub";
+    }
+
     &.mobile-hide {
       display: block;
     }
