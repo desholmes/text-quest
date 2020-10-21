@@ -8,9 +8,10 @@
   }
 
   .logo {
-
-    font-size: 0.56rem;
-    line-height: 0.3rem;
+    padding-top: 0.75rem;
+    font-family: "Inconsolata", "Courier New", Courier, monospace;
+    font-size: 0.6rem;
+    line-height: 0.34rem;
 
     /* Tablet */
     @media only screen and (min-width: $width--tablet-min) {
