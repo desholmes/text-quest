@@ -4,7 +4,7 @@
   "description": "Text Quest: Unlock your imagination",
   "repository": "https://github.com/desholmes/text-quest",
   "scripts": {
-    "clean": "rm -rf ./dist/*.ico ./dist/*.js ./dist/*.html ./dist/*.css ./dist/*.png ./dist/*.map",
+    "clean": "rm -rf ./dist/*.ico ./dist/*.js ./dist/*.html ./dist/*.css ./dist/*.png ./dist/*.jpg ./dist/*.map",
     "start": "parcel ./src/index.html",
     "build": "npm run clean && parcel build ./src/*.html",
     "lint": "prettier --check .",
