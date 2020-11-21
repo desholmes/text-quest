@@ -1,3 +1,8 @@
+import TextTerminal from "text-terminal";
+import "text-terminal/dist/text-terminal.css";
+
+import game from "./game";
+
 /****
  _             _                          _   
 | |_ _____   _| |_   __ _ _   _  ___  ___| |_ 
@@ -129,7 +134,7 @@ const TextQuest = () => {
     timeTaken = toMinsAndSecs(endTime - stats.startTime);
 
     playerPowersCount =
-      (game.player.powers && Array.isArray(game.player.powers))
+      game.player.powers && Array.isArray(game.player.powers)
         ? game.player.powers.length
         : 0;
 
@@ -137,8 +142,12 @@ const TextQuest = () => {
                   <h1>Game Stats</h1>
                   ${indent} Time taken: ${timeTaken}<br>
                   ${indent} Commands entered: ${stats.commandsEntered}<br>
-                  ${indent} Powers unlocked: ${playerPowersCount}/${Object.keys(game.powers).length}<br>
-                  ${indent} Blocks visited: ${[...new Set(game.player.blockHistory)].length}/${Object.keys(game.blocks).length}`);
+                  ${indent} Powers unlocked: ${playerPowersCount}/${
+      Object.keys(game.powers).length
+    }<br>
+                  ${indent} Blocks visited: ${
+      [...new Set(game.player.blockHistory)].length
+    }/${Object.keys(game.blocks).length}`);
   };
 
   const bagContainsItem = (item) => {
@@ -456,17 +465,15 @@ const init = () => {
     },
   };
 
-  const terminal = new VanillaTerminal({
-    container: "terminal",
-    welcome: null,
+  const terminal = new TextTerminal({
+    containerId: "terminal",
     prompt: "Traveller",
     separator: ": ",
+    welcome: "",
+    commands: commands,
   });
-  terminal.commands = commands;
-  //autocapitalize=off for mobile
-  terminal.DOM.input.setAttribute("autocapitalize", "off");
 
-  terminal.DOM.command.addEventListener(
+  terminal.dom.command.addEventListener(
     "keydown",
     (e) => {
       // up arrow
@@ -480,12 +487,12 @@ const init = () => {
         let inputCommands;
         let firstCommand;
         let commandsString;
-        if (terminal.DOM.input.value.includes(" ")) {
-          inputCommands = terminal.DOM.input.value.split(" ");
+        if (terminal.dom.input.value.includes(" ")) {
+          inputCommands = terminal.dom.input.value.split(" ");
           firstCommand = inputCommands[0];
           commandsString = inputCommands.join("-");
         } else {
-          inputCommands = terminal.DOM.input.value;
+          inputCommands = terminal.dom.input.value;
           firstCommand = commandsString = inputCommands;
         }
         const prefix = !commands.hasOwnProperty(firstCommand)

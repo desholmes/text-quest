@@ -21,8 +21,8 @@
 
   .container output {
     .power-unlocked {
-        animation: power-ani 0.6s 4;
-        color: #37debc;
+      animation: power-ani 0.6s 4;
+      color: #37debc;
     }
   }
 
@@ -43,7 +43,6 @@
 
   /* Tablet */
   @media only screen and (min-width: $width--tablet-min) {
-    width: 90%;
     & * {
       font-size: 1.5rem;
       line-height: 1.7rem;

@@ -3,7 +3,7 @@ game:
   version: 1.2
   description: Use commands to help the sleepy traveller escape
   author: <a href="https://github.com/desholmes">Des Holmes</a>
-  intro: "<p>And so it begins...</p><p>Blink, blink, yawn: You slowly wake up.</p><p>\"Where am I?!?, maybe I should <b>look</b> around.\"</p>"
+  intro: '<p>And so it begins...</p><p>Blink, blink, yawn: You slowly wake up.</p><p>"Where am I?!?, maybe I should <b>look</b> around."</p>'
 
 player:
   name: "Sleepy traveller"
@@ -39,7 +39,7 @@ items:
     description: "A small brass key with a decorative, red ribbon tied through it."
   torch:
     description: "A bright metal torch with a strong glowing yellow flame."
-  
+
 blocks:
   ######
   # CAVE ENTRANCE
@@ -58,18 +58,18 @@ blocks:
             bag: key
             actions:
               - updateExitState:
-                - north
-                - open
+                  - north
+                  - open
               - removeItemFromBag:
-                - key
+                  - key
         exits:
-          north: 
+          north:
             block: grand-hall
             state: "closed"
             states:
               closed:
                 description: "A large, locked, oak door stands before you. There is a keyhole, but it's too small to peep through."
-          west: 
+          west:
             block: well-lit-tunnel
             state: "open"
           east:
@@ -105,14 +105,14 @@ blocks:
           take key:
             actions:
               - removeItemFromBlock:
-                - key
+                  - key
               - addItemToBag:
-                - key
+                  - key
               - removeActionFromBlock:
-                - take key
+                  - take key
               - removeBagState:
               - updateBlockState:
-                - torch-no-key
+                  - torch-no-key
         exits:
           west:
             block: entrance
@@ -132,13 +132,13 @@ blocks:
           take torch:
             actions:
               - removeItemFromBlock:
-                - torch
+                  - torch
               - addItemToBag:
-                - torch
+                  - torch
               - removeActionFromBlock:
-                - take torch
+                  - take torch
               - updateBlockState:
-                - dim
+                  - dim
         exits:
           east:
             block: entrance
@@ -160,4 +160,4 @@ blocks:
         name: Grand Hall
         description: <p>You're standing in a vast hall. The long, well dressed table is full of delicious-looking food. A voice from the back of the room booms:</p><h1>"There you are my boy! Sit down, sit down. The food is getting cold."</h1><p>Your quest is complete!</p>
         auto-actions:
-            - completeQuest:
+          - completeQuest:
