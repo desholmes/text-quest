@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rm -rf ./dist/*.ico ./dist/*.js ./dist/*.html ./dist/*.css ./dist/*.png ./dist/*.map",
     "start": "parcel ./src/index.html",
-    "build": "npm run clean && parcel build ./src/index.html",
+    "build": "npm run clean && parcel build ./src/*.html",
     "lint": "prettier --check .",
     "lint-fix": "prettier --write ."
   },
