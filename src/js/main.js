@@ -1,3 +1,8 @@
+import TextTerminal from "text-terminal/dist";
+import "text-terminal/dist/text-terminal.css";
+
+import game from "./game";
+
 /****
  _             _                          _   
 | |_ _____   _| |_   __ _ _   _  ___  ___| |_ 
@@ -456,17 +461,15 @@ const init = () => {
     },
   };
 
-  const terminal = new VanillaTerminal({
-    container: "terminal",
-    welcome: null,
+  const terminal = new TextTerminal({
+    containerId: "terminal",
     prompt: "Traveller",
     separator: ": ",
+    welcome: "",
+    commands: commands,
   });
-  terminal.commands = commands;
-  //autocapitalize=off for mobile
-  terminal.DOM.input.setAttribute("autocapitalize", "off");
 
-  terminal.DOM.command.addEventListener(
+  terminal.dom.command.addEventListener(
     "keydown",
     (e) => {
       // up arrow
@@ -480,12 +483,12 @@ const init = () => {
         let inputCommands;
         let firstCommand;
         let commandsString;
-        if (terminal.DOM.input.value.includes(" ")) {
-          inputCommands = terminal.DOM.input.value.split(" ");
+        if (terminal.dom.input.value.includes(" ")) {
+          inputCommands = terminal.dom.input.value.split(" ");
           firstCommand = inputCommands[0];
           commandsString = inputCommands.join("-");
         } else {
-          inputCommands = terminal.DOM.input.value;
+          inputCommands = terminal.dom.input.value;
           firstCommand = commandsString = inputCommands;
         }
         const prefix = !commands.hasOwnProperty(firstCommand)

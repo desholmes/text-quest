@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Text Quest: Unlock your imagination</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="apple-touch-icon"
+      sizes="192x192"
+      href="/images/favicon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/images/favicon-16x16.png"
+    />
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+    <meta property="og:title" content="Text Quest: unlock your imagination" />
+    <meta
+      property="og:description"
+      content="Text Quest is a game engine for running text-based adventure games, using a low/no code approach to game design."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://textquest.io/" />
+    <meta
+      property="og:image"
+      content="https://textquest.io/images/textquest.jpg"
+    />
+    <meta property="og:locale" content="en_GB" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css"
+      rel="stylesheet"
+    />
+    <link href="styles/main.scss" rel="stylesheet" />
+  </head>
+  <body class="body">
+    <main id="terminal"></main>
+    <a
+      class="github-fork-ribbon right-top hide"
+      href="https://github.com/desholmes/text-quest"
+    ></a>
+  </body>
+  <script async src="https://www.googletagmanager.com/gtag/js"></script>
+  <script>
+    const tcs = {
+      "dev.textquest.io": "UA-77136513-8",
+      "textquest.io": "UA-77136513-9",
+    };
+    if (tcs.hasOwnProperty(window.location.hostname)) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", tcs[window.location.hostname]);
+    }
+  </script>
+  <script src="js/main.js" type="text/javascript"></script>
+</html>

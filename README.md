@@ -47,42 +47,21 @@ Here's an overview of the core concepts within a games:
 This project currently uses:
 
 1. [JavaScript](https://en.wikipedia.org/wiki/JavaScript) as the core programming language for the game engine
+1. [Parcel](https://parceljs.org/getting_started.html) web application bundler
+1. [text-terminal](https://github.com/desholmes/text-terminal) for the terminal interface
 1. [YAML](https://en.wikipedia.org/wiki/YAML) to store the game configuration
-1. [Gulp](https://gulpjs.com/) for local development workflow automation
-1. [Browsersync](https://www.browsersync.io/) as a local development server
-1. [Docker](https://www.docker.com/) for the development environment and to distribute the application
-1. [Pug](https://pugjs.org/api/getting-started.html) for HTML the templates
-1. [vanilla-terminal](https://github.com/soyjavi/vanilla-terminal) for the terminal interface
 1. [js-yaml](https://nodeca.github.io/js-yaml/) for YAML > JSON conversion
 1. [ascii generator](http://www.network-science.de/ascii/) for the logo
 1. [github-fork-ribbon-css](https://simonwhitaker.github.io/github-fork-ribbon-css/)
 
 ## Development: Getting Started
 
-### Prerequisites
-
-1. Installation of [Docker CE](https://store.docker.com/search?type=edition&offering=community)
-1. A working knowledge of [git SCM](https://git-scm.com/downloads)
-1. `make setup`: To `cp .env` into place
-
-#### Stat Development
-
-1. Complete the `Prerequisites` section
-1. Run `make run-dev-cold`: To build the dev docker image and start the container. `make run-dev` can be use for subsequent development sessions
-1. Open [localhost:3000](http://localhost:3000) in a browser to view the live reload dev server
-1. Changes to the `./src` directories will cause a live reload and compile/copied into `./dist`
-1. Press `CTRL+c` to stop the running container
-
-#### Viewing The App
-
-1. Complete the 'Getting Started > Prerequisites' section
-1. Run `make run-cold`: To build the dev docker image and start the container. `make build` and `make run` can be as separate commands to achieve the same
-1. Visit [localhost:5000](http://localhost:5000) in a browser to view
-1. Press `CTRL+c` to stop the running container
+1. Run `npm i`: To install the dependencies
+1. Open [localhost:1234](http://localhost:3000) in a browser to view the live reload development server
+1. Changes in the `./src` directories will cause a live reload and compiled files to `./dist`
+1. Press `CTRL+c` to stop the development server
 
 ## TODO
-
-### General
 
 1. Introduce `characters` as a concept (and associated `powers`
 1. Cross over with voice activation project
