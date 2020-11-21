@@ -1,4 +1,4 @@
-import TextTerminal from "text-terminal/dist";
+import TextTerminal from "text-terminal";
 import "text-terminal/dist/text-terminal.css";
 
 import game from "./game";
@@ -134,7 +134,7 @@ const TextQuest = () => {
     timeTaken = toMinsAndSecs(endTime - stats.startTime);
 
     playerPowersCount =
-      (game.player.powers && Array.isArray(game.player.powers))
+      game.player.powers && Array.isArray(game.player.powers)
         ? game.player.powers.length
         : 0;
 
@@ -142,8 +142,12 @@ const TextQuest = () => {
                   <h1>Game Stats</h1>
                   ${indent} Time taken: ${timeTaken}<br>
                   ${indent} Commands entered: ${stats.commandsEntered}<br>
-                  ${indent} Powers unlocked: ${playerPowersCount}/${Object.keys(game.powers).length}<br>
-                  ${indent} Blocks visited: ${[...new Set(game.player.blockHistory)].length}/${Object.keys(game.blocks).length}`);
+                  ${indent} Powers unlocked: ${playerPowersCount}/${
+      Object.keys(game.powers).length
+    }<br>
+                  ${indent} Blocks visited: ${
+      [...new Set(game.player.blockHistory)].length
+    }/${Object.keys(game.blocks).length}`);
   };
 
   const bagContainsItem = (item) => {
