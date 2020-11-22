@@ -16,6 +16,6 @@
     "parcel-bundler": "^1.12.4",
     "prettier": "2.1.2",
     "sass": "^1.28.0",
-    "text-terminal": "git+https://github.com/desholmes/text-terminal.git"
+    "text-terminal": "0.1.1"
   }
 }
