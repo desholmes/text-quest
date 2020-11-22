@@ -1,15 +1,12 @@
 #terminal {
-  height: 100%;
-  width: 100%;
-
   & * {
     font-size: 1.1rem;
     line-height: 1.4rem;
+    font-family: "Inconsolata", "Courier New", Courier, monospace;
   }
 
   .logo {
     padding-top: 0.75rem;
-    font-family: "Inconsolata", "Courier New", Courier, monospace;
     font-size: 0.6rem;
     line-height: 0.34rem;
 
