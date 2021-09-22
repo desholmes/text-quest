@@ -4,7 +4,7 @@
   "description": "Text Quest: Unlock your imagination",
   "repository": "https://github.com/desholmes/text-quest",
   "scripts": {
-    "clean": "rm -rf ./dist/*.ico ./dist/*.js ./dist/*.html ./dist/*.css ./dist/*.png ./dist/*.jpg ./dist/*.map",
+    "clean": "rm -rf ./dist/*",
     "start": "parcel ./src/index.html",
     "build": "npm run clean && parcel build ./src/*.html",
     "lint": "prettier --check .",
@@ -13,9 +13,11 @@
   "author": "Des Holmes https://github.com/desholmes",
   "license": "MIT",
   "devDependencies": {
-    "parcel-bundler": "^1.12.4",
+    "@parcel/transformer-image": "2.0.0-rc.0",
+    "@parcel/transformer-sass": "2.0.0-rc.0",
+    "parcel": "2.0.0-rc.0",
     "prettier": "2.1.2",
-    "sass": "^1.28.0",
+    "sass": "1.42.1",
     "text-terminal": "0.1.1"
   }
 }

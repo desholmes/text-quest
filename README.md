@@ -57,13 +57,13 @@ This project currently uses:
 ## Development: Getting Started
 
 1. Run `npm i`: To install the dependencies
-1. Open [localhost:1234](http://localhost:3000) in a browser to view the live reload development server
+1. Run `npm start` and open [localhost:1234](http://localhost:3000) in a browser to view the live reload development server
 1. Changes in the `./src` directories will cause a live reload and compiled files to `./dist`
 1. Press `CTRL+c` to stop the development server
 
 ## TODO
 
-1. Introduce `characters` as a concept (and associated `powers`
+1. Introduce `characters` as a concept (and associated `powers`)
 1. Cross over with voice activation project
 1. Upload/point to yaml URL
    1. Auto conversion yaml > JSON
