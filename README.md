@@ -1,5 +1,10 @@
 # Text Quest: Unlock your imagination
 
+Visit the [textquest.io website](https://textquest.io) or play one of the games:
+
+- [Halloween (v1.0)](https://halloween.textquest.io)
+- [The Sleepy Traveller (v1.2)](https://traveller.textquest.io)
+
 ```javascript
  _             _                          _
 | |_ _____   _| |_   __ _ _   _  ___  ___| |_
