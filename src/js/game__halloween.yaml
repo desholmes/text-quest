@@ -1,0 +1,337 @@
+game:
+  name: Halloween
+  version: 1.0
+  description: Use commands to free yourself from the spell
+  author: <a href="https://github.com/desholmes">Des Holmes</a>
+  intro: '<p>You jolt awake from a bad dream.</p><p>"What happened? Where am I?" You should <strong class="power-unlocked">look</strong> around.</p>'
+
+player:
+  name: "You"
+  block: under-stairs-cupboard
+  bag:
+  powers:
+  blockHistory:
+
+powers:
+  help:
+    description: "help: Lists your powers and any hints."
+  look:
+    description: "look: Use `look` for a description of your surroundings."
+  bag:
+    description: "bag: view the contents of your `bag`."
+  use:
+    description: "use: `use` an item from your `bag`."
+  powers:
+    description: "powers: List the powers you have unlocked."
+  take:
+    description: "take: `take` an item from a room and put it in your `bag`"
+  north:
+    description: "north: travel `north` from your current location."
+  east:
+    description: "east: travel `north` from your current location."
+  south:
+    description: "south: travel `south` from your current location."
+  west:
+    description: "west: travel `west` from your current location."
+
+items:
+  key:
+    description: "A large decorative brass key."
+  bottle:
+    description: "A small cork-topped bottle containing bright green liquid."
+
+blocks:
+  ######
+  # Under stairs cupboard
+  ######
+  under-stairs-cupboard:
+    state: default
+    states:
+      default:
+        name: "Tiny cupboard"
+        description: "You barely fit in this dark tiny space, your knees are tucked under your chin. There's a very small door, but there's no way you can fit through it. You can just make out the outline of a small bottle."
+        items:
+          - bottle
+        actions:
+          take bottle:
+            actions:
+              - addItemToBag:
+                  - bottle
+              - updateBlockState:
+                  - no-bottle
+      no-bottle:
+        name: "Tiny cupboard"
+        description: "You barely fit in this dark tiny space, your knees are tucked under your chin. There's a very small door, but there's no way you can fit through it."
+        actions:
+          use bottle:
+            bag: bottle
+            description: "You pull the cork out with your teeth, spilling the green liquid on you. There's a bright flash and you start to shrink..."
+            actions:
+              - updateBlockState:
+                  - shrunk
+              - updateExitState:
+                  - north
+                  - open
+              - removeItemFromBag:
+                  - bottle
+      shrunk:
+        name: "Cupboard"
+        description: "You are sat in a dark, dusty cupboard. Your legs need stretching. There's a faint light coming from under the door."
+        exits:
+          north:
+            block: long-thin-hall
+            state: "open"
+  ######
+  # Long thin hall (downstairs)
+  ######
+  long-thin-hall:
+    state: default
+    bag-state: key
+    states:
+      default:
+        name: "A long thin hall"
+        description: "You're standing in long, thin hallway. Dim candles lined the walls, revealing a vile wallpaper."
+        exits:
+          east:
+            block: creaky-stairs
+            state: open
+          west:
+            block: escape
+            state: closed
+            states:
+              closed:
+                description: "A large wooden door is locked shut"
+      key:
+        name: "A long thin hall"
+        description: "You're sprinting through the long, thin hallway."
+        actions:
+          use key:
+            bag: key
+            description: "You leap towards the door, unlocking it with the large brass key."
+            actions:
+              - removeItemFromBag:
+                  - key
+              - updateBlockState:
+                  - front-door-open
+        exits:
+          east:
+            block: creaky-stairs
+            state: closed
+            states:
+              closed:
+                description: "The witch grabbing her broom, and running towards you"
+          west:
+            block: front-door
+            state: closed
+            states:
+              closed:
+                description: "A large wooden door is locked shut"
+      front-door-open:
+        name: "A long thin hall"
+        description: "You stand sweating and breathless in the long thin hallway. The front door is ajar."
+        exits:
+          east:
+            block: creaky-stairs
+            state: "closed"
+            states:
+              closed:
+                description: "An ugly witch reaching out after you"
+          west:
+            block: escape
+            state: open
+  ######
+  # Creaky Stairs
+  ######
+  creaky-stairs:
+    state: default
+    bag-state: key
+    states:
+      default:
+        name: Creaky staircase
+        description: You tip-toe on the steps trying not to make a noise.
+        exits:
+          west:
+            block: long-thin-hall
+            state: "open"
+          north:
+            block: landing
+            state: "open"
+      key:
+        name: Creaky staircase
+        description: You sprint down stairs, the howls from the witch are deafening.
+        exits:
+          west:
+            block: long-thin-hall
+            state: "open"
+          north:
+            block: landing
+            state: "closed"
+            states:
+              closed:
+                description: "An angry witch chasing you"
+  ######
+  # Landing (Upstairs)
+  ######
+  landing:
+    state: default
+    bag-state: key
+    states:
+      default:
+        name: Empty landing, leading to a hallway
+        description: Now you're stood at the top of the stairs you can hear faint snoring, there's also a foul scent in the air.
+        exits:
+          south:
+            block: creaky-stairs
+            state: "open"
+          north:
+            block: hallway-upstairs
+            state: "open"
+      key:
+        name: Landing at the top of the stairs
+        description: You dart across the landing, desperately avoiding the clutches of the witch.
+        exits:
+          south:
+            block: creaky-stairs
+            state: "open"
+          north:
+            block: hallway-upstairs
+            state: "closed"
+            states:
+              closed:
+                description: "A screaming witch jumping over the cat towards you!"
+  ######
+  # Hallway (Upstairs)
+  ######
+  hallway-upstairs:
+    state: default
+    bag-state: key
+    states:
+      default:
+        name: Hallway
+        description: You shiver at the top of the stairs as the snoring gets louder, the stench turns your stomach.
+        exits:
+          south:
+            block: landing
+            state: "open"
+          west:
+            block: bedroom
+            state: "open"
+      key:
+        name: Hallway
+        description: A hissing black cat spits and scratches at you. You hear the witch scream "Comet you stupid cat? What is it?".
+        exits:
+          south:
+            block: landing
+            state: "open"
+          north:
+            block: bedroom
+            state: "closed"
+            states:
+              closed:
+                description: "A witch leaping from her bed towards you."
+
+  ######
+  # Bedroom (Upstairs)
+  ######
+  bedroom:
+    state: default
+    bag-state: key
+    states:
+      default:
+        name: Bedroom
+        description: You struggle to keep your eyes open from the thunderous snoring. A witch lays on a messy bed, her gapping mouth fills the room with a revolting stench.
+        exits:
+          east:
+            block: hallway-upstairs
+            state: "open"
+          west:
+            block: narrow-stairs
+            state: "open"
+      key:
+        name: Bedroom
+        description: The jangling key causes the witch to stir, you tip toe around her.
+        exits:
+          east:
+            block: hallway-upstairs
+            state: "open"
+          west:
+            block: narrow-stairs
+            state: "closed"
+            states:
+              closed:
+                description: "The black cat running towards you."
+  ######
+  # Narrow stairs (Upstairs - leading to the attic)
+  ######
+  narrow-stairs:
+    state: default
+    bag-state: key
+    states:
+      default:
+        name: Narrow stairs
+        description: The narrow stairs curl upward towards an attic.
+        exits:
+          east:
+            block: bedroom
+            state: "open"
+          south:
+            block: attic
+            state: "open"
+      key:
+        name: Narrow stairs
+        description: The cat stirs in the attic and starts to follow you.
+        exits:
+          east:
+            block: bedroom
+            state: "open"
+          south:
+            block: attic
+            state: "closed"
+            states:
+              closed:
+                description: "A black cat stalking you."
+  ######
+  # Attic
+  ######
+  attic:
+    state: default
+    states:
+      default:
+        name: Attic
+        description: You are hunched in a small, cluttered, room filled with jars and old wooden boxes. A manky-looking black cat is curled up asleep in the corner, a large key is tucked under it's front paw.
+        items:
+          - key
+        actions:
+          take key:
+            actions:
+              - addItemToBag:
+                  - key
+              - removeItemFromBlock:
+                  - key
+              - removeActionFromBlock:
+                  - take key
+              - updateBlockState:
+                  - key
+        exits:
+          north:
+            block: narrow-stairs
+            state: "open"
+      key:
+        name: Attic
+        description: You are desperate to get out, which door does the key open?
+        exits:
+          north:
+            block: narrow-stairs
+            state: "open"
+
+  ######
+  # Escape
+  ######
+  escape:
+    state: default
+    states:
+      default:
+        name: Outside
+        description: <p>As you spring out of the door you hear laughter...</p><p>Your sister, Gretel, is pointing at the house and rolling around the floor in fits of giggles.</p><p>You turn slowly and see your mother holding the family cat - "Trick or Treat Hansel! Happy halloween my darling".</p>
+        auto-actions:
+          - completeQuest:
