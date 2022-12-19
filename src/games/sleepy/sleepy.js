@@ -1,7 +1,7 @@
 import TextTerminal from "text-terminal/src/modules/textTerminal";
 import "text-terminal/dist/text-terminal.css";
 
-import game from "./game__the-sleepy-traveller.yaml";
+import game from "./sleepy.yaml";
 
 /** **
  _             _                          _   
@@ -467,7 +467,7 @@ const init = () => {
 
   const terminal = new TextTerminal({
     containerId: "terminal",
-    prompt: "Hansel",
+    prompt: "Traveller",
     separator: ": ",
     welcome: "",
     commands,

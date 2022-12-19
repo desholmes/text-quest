@@ -1,20 +1,19 @@
 {
   "name": "text-quest",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Text Quest: Unlock your imagination",
   "repository": "https://github.com/desholmes/text-quest",
   "scripts": {
-    "analytics-add": "node ./addAnalytics.js",
-    "social-image-add": "cp ./src/images/text-quest-social-cover.png ./dist/",
-    "clean": "rm -rf ./dist/*.css ./dist/*.map ./dist/*.html ./dist/*.js ./dist/*.jpg ./dist/*.png ./dist/*.ico",
-    "start": "parcel ./src/sleepy.html",
-    "build": "npm run clean && parcel build ./src/*.html && npm run analytics-add && npm run social-image-add",
-    "build-serve": "http-server dist/",
+    "social-image-add": "cp ./src/images/text-quest-social-cover.png ./dist-$npm_config_game/",
+    "clean": "rm -rf ./dist-$npm_config_game/*.css ./dist-$npm_config_game/*.map ./dist-$npm_config_game/*.html ./dist-$npm_config_game/*.js ./dist-$npm_config_game/*.jpg ./dist-$npm_config_game/*.png ./dist-$npm_config_game/*.ico",
+    "start": "parcel --dist-dir=dist-$npm_config_game ./src/games/$npm_config_game/index.html",
+    "build": "npm run clean && parcel build --no-cache --dist-dir=dist-$npm_config_game ./src/games/$npm_config_game/index.html && npm run social-image-add",
+    "build:serve": "http-server dist-$npm_config_game/",
     "prettier": "./node_modules/.bin/prettier --check ./src/",
-    "prettier-fix": "./node_modules/.bin/prettier --write ./src/",
+    "prettier:fix": "./node_modules/.bin/prettier --write ./src/",
     "lint": "./node_modules/.bin/eslint --max-warnings=0 --ext=js src",
-    "lint-fix": "./node_modules/.bin/eslint --max-warnings=0 --fix --ext=js src",
-    "prettier-lint-fix": "npm run prettier-fix && npm run lint-fix"
+    "lint:fix": "./node_modules/.bin/eslint --max-warnings=0 --fix --ext=js src",
+    "prettier-lint:fix": "npm run prettier:fix && npm run lint:fix"
   },
   "author": "Des Holmes https://github.com/desholmes",
   "license": "MIT",
@@ -38,7 +37,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run prettier-lint-fix"
+      "pre-commit": "npm run prettier-lint:fix"
     }
   }
 }
