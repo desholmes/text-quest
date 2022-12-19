@@ -13,24 +13,23 @@
     "prettier:fix": "./node_modules/.bin/prettier --write ./src/",
     "lint": "./node_modules/.bin/eslint --max-warnings=0 --ext=js src",
     "lint:fix": "./node_modules/.bin/eslint --max-warnings=0 --fix --ext=js src",
-    "prettier-lint:fix": "npm run prettier:fix && npm run lint:fix"
+    "prettier-lint:fix": "npm run prettier:fix && npm run lint:fix",
+    "prepare": "husky install"
   },
   "author": "Des Holmes https://github.com/desholmes",
   "license": "MIT",
   "devDependencies": {
-    "@parcel/transformer-image": "2.0.0-rc.0",
-    "@parcel/transformer-sass": "2.0.0-rc.0",
-    "@parcel/transformer-yaml": "2.0.0-rc.0",
-    "eslint": "7.32.0",
-    "eslint-config-airbnb-base": "14.2.1",
-    "eslint-config-prettier": "8.3.0",
-    "eslint-plugin-import": "2.24.2",
-    "http-server": "13.0.2",
-    "husky": "4.3.8",
-    "parcel": "2.0.0-rc.0",
-    "prettier": "2.1.2",
-    "replace": "1.2.1",
-    "sass": "1.42.1"
+    "@parcel/transformer-image": "2.8.2",
+    "@parcel/transformer-sass": "2.8.2",
+    "@parcel/transformer-yaml": "2.8.2",
+    "eslint": "8.30.0",
+    "eslint-config-airbnb-base": "15.0.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-import": "2.26.0",
+    "http-server": "14.1.1",
+    "husky": "8.0.2",
+    "parcel": "2.8.2",
+    "prettier": "2.8.1"
   },
   "dependencies": {
     "text-terminal": "0.2.0"
