@@ -11,25 +11,25 @@
     <link
       rel="apple-touch-icon"
       sizes="192x192"
-      href="images/favicon-192x192.png"
+      href="../../images/favicon-192x192.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="images/favicon-32x32.png"
+      href="../../images/favicon-32x32.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="16x16"
-      href="images/favicon-16x16.png"
+      href="../../images/favicon-16x16.png"
     />
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="../../images/favicon.ico" />
 
     <meta
       name="description"
-      content="You wake up from a dream, but where are you?"
+      content="Hansel is trapped. Can you help him escape the clutches of the evil witch?"
     />
     <meta
       name="keywords"
@@ -44,16 +44,16 @@
     />
     <meta
       property="og:description"
-      content="You wake up from a dream, but where are you?"
+      content="Hansel is trapped. Can you help him escape the clutches of the evil witch?"
     />
-    <meta property="og:url" content="https://traveller.textquest.io/" />
+    <meta property="og:url" content="https://halloween.textquest.io/" />
     <meta
       property="og:site_name"
       content="Play text quest - unlock your imagination"
     />
     <meta
       property="og:image"
-      content="https://traveller.textquest.io/text-quest-social-cover.png"
+      content="https://halloween.textquest.io/text-quest-social-cover.png"
     />
 
     <link
@@ -64,16 +64,29 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css"
       rel="stylesheet"
     />
-    <link href="styles/main.scss" rel="stylesheet" />
+    <link href="../../styles/main.scss" rel="stylesheet" />
   </head>
 
   <body class="body">
-    <analytics></analytics>
     <main id="terminal"></main>
     <a
       class="github-fork-ribbon right-top hide"
       href="https://github.com/desholmes/text-quest"
     ></a>
-    <script src="js/sleepy.js" type="module" type="text/javascript"></script>
+    <script src="./halloween.js" type="module" type="text/javascript"></script>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-DSJQ3S9X0Y"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-DSJQ3S9X0Y");
+    </script>
   </body>
 </html>

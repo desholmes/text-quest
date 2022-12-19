@@ -1,7 +1,7 @@
 import TextTerminal from "text-terminal/src/modules/textTerminal";
 import "text-terminal/dist/text-terminal.css";
 
-import game from "./game__halloween.yaml";
+import game from "./halloween.yaml";
 
 /** **
  _             _                          _   

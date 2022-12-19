@@ -59,10 +59,12 @@ This project currently uses:
 
 ## Development: Getting Started
 
-1. Run `npm i`: To install the dependencies
-1. Run `npm start` and open [localhost:1234](http://localhost:3000) in a browser to view the live reload development server
-1. Changes in the `./src` directories will cause a live reload and compiled files to `./dist`
-1. Press `CTRL+c` to stop the development server
+1. `npm i`: To install the dependencies
+2. `npm start --game=sleepy` and open [localhost:1234](http://localhost:3000) in a browser to view the live reload development server
+3. Changes in the `./src` directories will cause a live reload and compiled files to `./dist-$game`
+4. Press `CTRL+c` to stop the development server
+5. `npm run build --game=sleepy`: Builds to `./dist-$game`
+6. `npm run build:serve --game=sleepy`: Server builds from `./dist-$game`
 
 ## TODO
 
