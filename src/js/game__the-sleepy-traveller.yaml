@@ -3,7 +3,7 @@ game:
   version: 1.2
   description: Use commands to help the sleepy traveller escape
   author: <a href="https://github.com/desholmes">Des Holmes</a>
-  intro: '<p>And so it begins...</p><p>Blink, blink, yawn: You slowly wake up.</p><p>"Where am I?!?, maybe I should <b>look</b> around."</p>'
+  intro: '<p>And so it begins...</p><p>Blink, blink, yawn: You slowly wake up.</p><p>"Where am I?!?, maybe I should <strong class="power-unlocked">look</strong> around."</p>'
 
 player:
   name: "Sleepy traveller"

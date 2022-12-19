@@ -1,23 +1,44 @@
 {
   "name": "text-quest",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Text Quest: Unlock your imagination",
   "repository": "https://github.com/desholmes/text-quest",
   "scripts": {
-    "clean": "rm -rf ./dist/*",
+    "analytics-add": "node ./addAnalytics.js",
+    "social-image-add": "cp ./src/images/text-quest-social-cover.png ./dist/",
+    "clean": "rm -rf ./dist/*.css ./dist/*.map ./dist/*.html ./dist/*.js ./dist/*.jpg ./dist/*.png ./dist/*.ico",
     "start": "parcel ./src/index.html",
-    "build": "npm run clean && parcel build ./src/*.html",
-    "lint": "prettier --check .",
-    "lint-fix": "prettier --write ."
+    "build": "npm run clean && parcel build ./src/*.html && npm run analytics-add && npm run social-image-add",
+    "build-serve": "http-server dist/",
+    "prettier": "./node_modules/.bin/prettier --check ./src/",
+    "prettier-fix": "./node_modules/.bin/prettier --write ./src/",
+    "lint": "./node_modules/.bin/eslint --max-warnings=0 --ext=js src",
+    "lint-fix": "./node_modules/.bin/eslint --max-warnings=0 --fix --ext=js src",
+    "prettier-lint-fix": "npm run prettier-fix && npm run lint-fix"
   },
   "author": "Des Holmes https://github.com/desholmes",
   "license": "MIT",
   "devDependencies": {
     "@parcel/transformer-image": "2.0.0-rc.0",
     "@parcel/transformer-sass": "2.0.0-rc.0",
+    "@parcel/transformer-yaml": "2.0.0-rc.0",
+    "eslint": "7.32.0",
+    "eslint-config-airbnb-base": "14.2.1",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-import": "2.24.2",
+    "http-server": "13.0.2",
+    "husky": "4.3.8",
     "parcel": "2.0.0-rc.0",
     "prettier": "2.1.2",
-    "sass": "1.42.1",
-    "text-terminal": "0.1.1"
+    "replace": "1.2.1",
+    "sass": "1.42.1"
+  },
+  "dependencies": {
+    "text-terminal": "0.2.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run prettier-lint-fix"
+    }
   }
 }
