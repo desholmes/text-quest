@@ -467,7 +467,7 @@ const init = () => {
 
   const terminal = new TextTerminal({
     containerId: "terminal",
-    prompt: "Traveller",
+    prompt: "Hansel",
     separator: ": ",
     welcome: "",
     commands,

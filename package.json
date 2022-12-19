@@ -7,7 +7,7 @@
     "analytics-add": "node ./addAnalytics.js",
     "social-image-add": "cp ./src/images/text-quest-social-cover.png ./dist/",
     "clean": "rm -rf ./dist/*.css ./dist/*.map ./dist/*.html ./dist/*.js ./dist/*.jpg ./dist/*.png ./dist/*.ico",
-    "start": "parcel ./src/index.html",
+    "start": "parcel ./src/sleepy.html",
     "build": "npm run clean && parcel build ./src/*.html && npm run analytics-add && npm run social-image-add",
     "build-serve": "http-server dist/",
     "prettier": "./node_modules/.bin/prettier --check ./src/",

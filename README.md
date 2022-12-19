@@ -1,6 +1,6 @@
 # Text Quest: Unlock your imagination
 
-Visit the [textquest.io website](https://textquest.io) or play one of the games:
+Visit the [website](https://textquest.io) or play one of the games:
 
 - [Halloween (v1.0)](https://halloween.textquest.io)
 - [The Sleepy Traveller (v1.2)](https://traveller.textquest.io)
@@ -19,8 +19,6 @@ Visit the [textquest.io website](https://textquest.io) or play one of the games:
 ## Overview
 
 Text Quest is a game engine for running text-based adventure games, using a low/no code approach to game design.
-
-A hosted version of the demo game `The Sleepy Traveller (v1.1)` can be found at: [textquest.io](https://textquest.io/).
 
 ## Motivation
 
@@ -52,12 +50,12 @@ Here's an overview of the core concepts within a games:
 This project currently uses:
 
 1. [JavaScript](https://en.wikipedia.org/wiki/JavaScript) as the core programming language for the game engine
-1. [Parcel](https://parceljs.org/getting_started.html) web application bundler
-1. [text-terminal](https://github.com/desholmes/text-terminal) for the terminal interface
-1. [YAML](https://en.wikipedia.org/wiki/YAML) to store the game configuration
-1. [js-yaml](https://nodeca.github.io/js-yaml/) for YAML > JSON conversion
-1. [ascii generator](http://www.network-science.de/ascii/) for the logo
-1. [github-fork-ribbon-css](https://simonwhitaker.github.io/github-fork-ribbon-css/)
+2. [Node.js v16](https://nodejs.org/en/about/releases/)
+3. [Parcel](https://parceljs.org/getting_started.html) web application bundler
+4. [text-terminal](https://github.com/desholmes/text-terminal) for the terminal interface
+5. [YAML](https://en.wikipedia.org/wiki/YAML) to store
+6. [ascii generator](http://www.network-science.de/ascii/) for the logo
+7. [github-fork-ribbon-css](https://simonwhitaker.github.io/github-fork-ribbon-css/)
 
 ## Development: Getting Started
 

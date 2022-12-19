@@ -8,8 +8,9 @@
     content: "GitHub";
   }
 
-  &.mobile-hide {
-    display: none;
+  &.mobile-hide,
+  &.hide {
+    display: none !important;
   }
 
   /* Tablet */
@@ -20,10 +21,6 @@
 
     &::after {
       content: "Fork me on GitHub";
-    }
-
-    &.mobile-hide {
-      display: block;
     }
   }
 }
