@@ -1,6 +1,6 @@
 # Text Quest: Unlock your imagination
 
-Visit the [website](https://textquest.io) or play one of the games:
+Visit the [text quest website](https://textquest.io), [Studio23 Games](https://games.studio23.london/) or play one of the games:
 
 * [Halloween (v1.0)](https://halloween.textquest.io)
 * [The Sleepy Traveller (v1.2)](https://traveller.textquest.io)
@@ -50,7 +50,7 @@ Here's an overview of the core concepts within a games:
 This project currently uses:
 
 1. [JavaScript](https://en.wikipedia.org/wiki/JavaScript) as the core programming language for the game engine
-2. [Node.js v16](https://nodejs.org/en/about/releases/)
+2. [Node.js v20 LTS](https://nodejs.org/en/about/releases/)
 3. [Parcel](https://parceljs.org/getting_started.html) web application bundler
 4. [text-terminal](https://github.com/desholmes/text-terminal) for the terminal interface
 5. [YAML](https://en.wikipedia.org/wiki/YAML) to store
@@ -73,13 +73,14 @@ This project currently uses:
 3. Upload/point to yaml URL
    1. Auto conversion yaml > JSON
    1. Game yaml validator
-4. Create a supporting website with docs and links to games
-5. Online game editor (visual, or text based)
+4. Online game editor (visual, or text based)
 
 ***
 
 ## Credits
 
+* [Studio23 Games](https://games.studio23.london/)
+  * [Explore Studio23 Games](https://games.studio23.london/games/)
 * [Des Holmes: Technical Leadership & Product Development](https://dholmes.co.uk)
   * [Blog](https://dholmes.co.uk)
   * [Text Quest: A Low/No Code Approach to Game Design](https://dholmes.co.uk/blog/text-quest-javascript-game-engine/)

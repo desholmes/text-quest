@@ -124,11 +124,11 @@ const TextQuest = () => {
                       ${indent} Time taken: ${timeTaken}<br>
                       ${indent} Commands entered: ${stats.commandsEntered}<br>
                       ${indent} Powers unlocked: ${playerPowersCount}/${
-      Object.keys(game.powers).length
-    }<br>
+                        Object.keys(game.powers).length
+                      }<br>
                       ${indent} Blocks visited: ${
-      [...new Set(game.player.blockHistory)].length
-    }/${Object.keys(game.blocks).length}`);
+                        [...new Set(game.player.blockHistory)].length
+                      }/${Object.keys(game.blocks).length}`);
   };
 
   const getBagList = () => {
@@ -160,7 +160,7 @@ const TextQuest = () => {
     let exitList = "";
     Object.keys(block.exits).forEach((exitId) => {
       exitList += `${indent} <b>${exitId}</b>: ${getExitState(
-        block.exits[exitId]
+        block.exits[exitId],
       )}<br>`;
     });
     return exitList;
@@ -268,7 +268,7 @@ const TextQuest = () => {
 
       const currentBlock = getBlock(
         getBlockState(game.player.block),
-        game.player.block
+        game.player.block,
       );
       game.player.block = currentBlock.exits[direction].block;
       term.output(getBlockIntro(game.player.block));
@@ -276,7 +276,7 @@ const TextQuest = () => {
 
       const newBlock = getBlock(
         getBlockState(game.player.block),
-        game.player.block
+        game.player.block,
       );
 
       game.player.blockHistory.push(game.player.block);
@@ -335,7 +335,7 @@ const TextQuest = () => {
   const completeQuest = () => {
     getStats();
     term.output(
-      `<p>Play more games at: <a href="https://textquest.io">textquest.io</a>.</p>`
+      `<p>Play more games at: <a href="https://textquest.io">textquest.io</a>.</p>`,
     );
     const commandDom = document.querySelector(".command");
     commandDom.style.display = "none";
@@ -359,9 +359,8 @@ const TextQuest = () => {
   // eslint-disable-next-line no-unused-vars
   const removeItemFromBlock = (item) => {
     const blockState = getBlockState(game.player.block);
-    const itemIndex = game.blocks[game.player.block].states[
-      blockState
-    ].items.indexOf(item);
+    const itemIndex =
+      game.blocks[game.player.block].states[blockState].items.indexOf(item);
     game.blocks[game.player.block].states[blockState].items.splice(itemIndex);
   };
 
@@ -395,7 +394,7 @@ const TextQuest = () => {
     stats.startTime = new Date().getTime();
     term.output(welcome);
     term.output(
-      `<h1>Quest: ${game.game.name} (v${game.game.version} by ${game.game.author})</h1>`
+      `<h1>Quest: ${game.game.name} (v${game.game.version} by ${game.game.author})</h1>`,
     );
     term.output(divider);
     term.output(game.game.intro);
@@ -487,7 +486,7 @@ const init = () => {
         const inputCommands = terminal.dom.input.value.split(" ");
         const prefix = !Object.prototype.hasOwnProperty.call(
           commands,
-          inputCommands[0]
+          inputCommands[0],
         )
           ? "commandUnknown"
           : "commandKnown";
@@ -495,7 +494,7 @@ const init = () => {
           "command",
           "entered",
           "raw",
-          `${prefix}--${inputCommands.join("-")}`
+          `${prefix}--${inputCommands.join("-")}`,
         );
         // bump to commands entered stat
         tq.bumpCommandsEntered();
@@ -511,7 +510,7 @@ const init = () => {
         }
       }
     },
-    true
+    true,
   );
 
   tq.setTerm(terminal);
@@ -523,7 +522,7 @@ const init = () => {
     () => {
       document.querySelector(".input").focus();
     },
-    true
+    true,
   );
 
   // show the 'fork me' banner if we're not on local host
