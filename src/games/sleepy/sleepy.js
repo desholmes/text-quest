@@ -215,7 +215,7 @@ const TextQuest = () => {
   const processActions = (actions) => {
     for (let i = 0; i < actions.length; i += 1) {
       const funcName = Object.keys(actions[i])[0];
-      // eslint-disable-next-line no-eval
+
       const func = eval(funcName);
       func(actions[i][funcName]);
     }
@@ -331,7 +331,6 @@ const TextQuest = () => {
       Dynamic functions called from inside game*.yaml
   */
 
-  // eslint-disable-next-line no-unused-vars
   const completeQuest = () => {
     getStats();
     term.output(
@@ -342,7 +341,6 @@ const TextQuest = () => {
     track("quest", "complete");
   };
 
-  // eslint-disable-next-line no-unused-vars
   const addItemToBag = (itemArray) => {
     if (!Array.isArray(game.player.bag)) {
       game.player.bag = [];
@@ -350,13 +348,11 @@ const TextQuest = () => {
     game.player.bag.push(itemArray[0]);
   };
 
-  // eslint-disable-next-line no-unused-vars
   const removeItemFromBag = (item) => {
     const itemIndex = game.player.bag.indexOf(item);
     game.player.bag.splice(itemIndex);
   };
 
-  // eslint-disable-next-line no-unused-vars
   const removeItemFromBlock = (item) => {
     const blockState = getBlockState(game.player.block);
     const itemIndex =
@@ -364,18 +360,15 @@ const TextQuest = () => {
     game.blocks[game.player.block].states[blockState].items.splice(itemIndex);
   };
 
-  // eslint-disable-next-line no-unused-vars
   const removeActionFromBlock = (action) => {
     const blockState = getBlockState(game.player.block);
     delete game.blocks[game.player.block].states[blockState].actions[action];
   };
 
-  // eslint-disable-next-line no-unused-vars
   const updateBlockState = (state) => {
     game.blocks[game.player.block].state = state;
   };
 
-  // eslint-disable-next-line no-unused-vars
   const updateExitState = (exitUpdateArray) => {
     const blockState = getBlockState(game.player.block);
     const updateValue = exitUpdateArray[1];
@@ -384,7 +377,6 @@ const TextQuest = () => {
     ].state = updateValue;
   };
 
-  // eslint-disable-next-line no-unused-vars
   const removeBagState = () => {
     // const blockState = getBlockState(game.player.block);
     delete game.blocks[game.player.block]["bag-state"];
