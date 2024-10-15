@@ -1,6 +1,6 @@
 # Text Quest: Unlock your imagination
 
-Visit the [text quest website](https://textquest.io), [Studio23 Games](https://games.studio23.london/) or play one of the games:
+Visit the [Text Quest website](https://textquest.io), [Studio23 Games](https://games.studio23.london/) or play one of the games:
 
 * [Halloween (v1.0)](https://halloween.textquest.io)
 * [The Sleepy Traveller (v1.2)](https://traveller.textquest.io)
