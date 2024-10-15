@@ -5,7 +5,7 @@ Visit the [Text Quest website](https://textquest.io), [Studio23 Games](https://g
 * [Halloween (v1.0)](https://halloween.textquest.io)
 * [The Sleepy Traveller (v1.2)](https://traveller.textquest.io)
 
-```javascript
+```text
  _             _                          _
 | |_ _____   _| |_   __ _ _   _  ___  ___| |_
 | __/ _ \ \/ / __|  / _` | | | |/ _ \/ __| __|
