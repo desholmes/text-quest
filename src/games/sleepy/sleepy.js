@@ -215,8 +215,7 @@ const TextQuest = () => {
   const processActions = (actions) => {
     for (let i = 0; i < actions.length; i += 1) {
       const funcName = Object.keys(actions[i])[0];
-
-      const func = eval(funcName);
+      const func = actionHandlers[funcName];
       func(actions[i][funcName]);
     }
   };
@@ -314,13 +313,15 @@ const TextQuest = () => {
     isPowerKnown("use");
     const blockAction = getBlockAction(`use ${item}`);
 
-    if (!bagContainsItem(blockAction.bag)) {
-      term.output(`<p>You don't have ${item}.</p>`);
-      track("use", "dont-have", item);
-    } else if (blockAction !== false) {
-      processActions(blockAction.actions);
-      term.output(`<p>${blockAction.description}`);
-      track("use", "have", item);
+    if (blockAction !== false) {
+      if (!bagContainsItem(blockAction.bag)) {
+        term.output(`<p>You don't have ${item}.</p>`);
+        track("use", "dont-have", item);
+      } else {
+        processActions(blockAction.actions);
+        term.output(`<p>${blockAction.description}`);
+        track("use", "have", item);
+      }
     } else {
       term.output(`<p>You can't use that.</p>`);
       track("use", "cant-use", item);
@@ -350,14 +351,18 @@ const TextQuest = () => {
 
   const removeItemFromBag = (item) => {
     const itemIndex = game.player.bag.indexOf(item);
-    game.player.bag.splice(itemIndex);
+    if (itemIndex !== -1) {
+      game.player.bag.splice(itemIndex, 1);
+    }
   };
 
   const removeItemFromBlock = (item) => {
     const blockState = getBlockState(game.player.block);
-    const itemIndex =
-      game.blocks[game.player.block].states[blockState].items.indexOf(item);
-    game.blocks[game.player.block].states[blockState].items.splice(itemIndex);
+    const blockItems = game.blocks[game.player.block].states[blockState].items;
+    const itemIndex = blockItems.indexOf(item);
+    if (itemIndex !== -1) {
+      blockItems.splice(itemIndex, 1);
+    }
   };
 
   const removeActionFromBlock = (action) => {
@@ -380,6 +385,17 @@ const TextQuest = () => {
   const removeBagState = () => {
     // const blockState = getBlockState(game.player.block);
     delete game.blocks[game.player.block]["bag-state"];
+  };
+
+  const actionHandlers = {
+    completeQuest,
+    addItemToBag,
+    removeItemFromBag,
+    removeItemFromBlock,
+    removeActionFromBlock,
+    updateBlockState,
+    updateExitState,
+    removeBagState,
   };
 
   const start = () => {
