@@ -19,6 +19,7 @@
   "author": "Des Holmes https://github.com/desholmes",
   "license": "MIT",
   "devDependencies": {
+    "@eslint/js": "10.0.1",
     "@parcel/transformer-image": "2.16.4",
     "@parcel/transformer-yaml": "2.16.4",
     "eslint": "10.9.1",
