@@ -12,7 +12,9 @@ import "text-terminal/dist/text-terminal.css";
                        Unlock your imagination.
 ** */
 
-const TextQuest = (game) => {
+const TextQuest = (gameData) => {
+  // work on a private copy so the imported game definition is never mutated
+  const game = structuredClone(gameData);
   let term;
   const indent = "--->";
   const divider = "<p>------------------</p>";
@@ -102,7 +104,7 @@ const TextQuest = (game) => {
 
   const toMinsAndSecs = (mills) => {
     const minutes = Math.floor(mills / 60000);
-    const seconds = ((mills % 60000) / 1000).toFixed(0);
+    const seconds = Number(((mills % 60000) / 1000).toFixed(0));
     return seconds === 60
       ? `${minutes + 1}m 00s`
       : `${minutes}m ${seconds < 10 ? "0" : ""}${seconds}s`;
@@ -143,12 +145,18 @@ const TextQuest = (game) => {
     } else {
       bagList += 'Your <strong class="power-unlocked">bag</strong> is empty';
     }
-    return `<p>${bagList}<p>`;
+    return `<p>${bagList}</p>`;
   };
 
   const getExitState = (exit) => {
     if (exit.state === "open") {
       return `${getBlockName(exit.block)}`;
+    }
+    if (
+      !Object.prototype.hasOwnProperty.call(exit, "states") ||
+      !Object.prototype.hasOwnProperty.call(exit.states, exit.state)
+    ) {
+      return "";
     }
     return exit.states[exit.state].description;
   };
@@ -174,7 +182,10 @@ const TextQuest = (game) => {
 
   const existIsAvailable = (exitId) => {
     const block = getBlock(getBlockState(game.player.block), game.player.block);
-    if (Object.prototype.hasOwnProperty.call(block.exits, exitId)) {
+    if (
+      Object.prototype.hasOwnProperty.call(block, "exits") &&
+      Object.prototype.hasOwnProperty.call(block.exits, exitId)
+    ) {
       if (block.exits[exitId].state === "open") {
         return true;
       }
@@ -193,7 +204,7 @@ const TextQuest = (game) => {
     } else {
       powerList += "You have no powers :( Try typing a command";
     }
-    return `<p>${powerList}<p>`;
+    return `<p>${powerList}</p>`;
   };
 
   const getBlockAction = (action) => {
@@ -317,7 +328,7 @@ const TextQuest = (game) => {
         track("use", "dont-have", item);
       } else {
         processActions(blockAction.actions);
-        term.output(`<p>${blockAction.description}`);
+        term.output(`<p>${blockAction.description}</p>`);
         track("use", "have", item);
       }
     } else {
