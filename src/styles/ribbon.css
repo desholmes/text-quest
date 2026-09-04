@@ -1,0 +1,28 @@
+.github-fork-ribbon {
+  position: fixed;
+  top: -30px;
+  right: -30px;
+  font-size: 0.77rem;
+}
+
+.github-fork-ribbon::after {
+  content: "GitHub";
+}
+
+.github-fork-ribbon.mobile-hide,
+.github-fork-ribbon.hide {
+  display: none !important;
+}
+
+/* Tablet */
+@media only screen and (min-width: 550px) {
+  .github-fork-ribbon {
+    top: 0;
+    right: 0;
+    font-size: 1rem;
+  }
+
+  .github-fork-ribbon::after {
+    content: "Fork me on GitHub";
+  }
+}
