@@ -31,7 +31,7 @@ The project was started to...
 
 ## Game Design
 
-Games are defined using [YAML](https://en.wikipedia.org/wiki/YAML). A sample game can be seen in [./game.yml](./game.yml)).
+Games are defined using [YAML](https://en.wikipedia.org/wiki/YAML). A sample game can be seen in [./src/games/sleepy/sleepy.yaml](./src/games/sleepy/sleepy.yaml).
 
 Here's an overview of the core concepts within a games:
 
@@ -50,7 +50,7 @@ Here's an overview of the core concepts within a games:
 This project currently uses:
 
 1. [JavaScript](https://en.wikipedia.org/wiki/JavaScript) as the core programming language for the game engine
-2. [Node.js v20 LTS](https://nodejs.org/en/about/releases/)
+2. [Node.js v24 LTS](https://nodejs.org/en/about/releases/)
 3. [Parcel](https://parceljs.org/getting_started.html) web application bundler
 4. [text-terminal](https://github.com/desholmes/text-terminal) for the terminal interface
 5. [YAML](https://en.wikipedia.org/wiki/YAML) to store
@@ -60,11 +60,11 @@ This project currently uses:
 ## Development: Getting Started
 
 1. `npm i`: To install the dependencies
-2. `npm start --game=sleepy` and open [localhost:1234](http://localhost:3000) in a browser to view the live reload development server
-3. Changes in the `./src` directories will cause a live reload and compiled files to `./dist-$game`
+2. `npm start -- sleepy` and open [localhost:1234](http://localhost:1234) in a browser to view the live reload development server
+3. Changes in the `./src` directories will cause a live reload and compiled files to `./dist-sleepy`
 4. Press `CTRL+c` to stop the development server
-5. `npm run build --game=sleepy`: Builds to `./dist-$game`
-6. `npm run build:serve --game=sleepy`: Server builds from `./dist-$game`
+5. `npm run build -- sleepy`: Builds to `./dist-sleepy`
+6. `npm run build:serve -- sleepy`: Server builds from `./dist-sleepy`
 
 ## TODO
 

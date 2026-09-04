@@ -6,7 +6,7 @@ game:
   intro: '<p>You jolt awake from a bad dream.</p><p>"What happened? Where am I?" You should <strong class="power-unlocked">look</strong> around.</p>'
 
 player:
-  name: "You"
+  name: "Hansel"
   block: under-stairs-cupboard
   bag:
   powers:

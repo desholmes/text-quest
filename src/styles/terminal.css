@@ -1,0 +1,71 @@
+#terminal * {
+  font-size: 1.1rem;
+  line-height: 1.4rem;
+  font-family: "Inconsolata", "Courier New", Courier, monospace;
+}
+
+#terminal .logo {
+  padding-top: 0.75rem;
+  font-size: 0.6rem;
+  line-height: 0.34rem;
+}
+
+#terminal .container output .power-unlocked {
+  animation: power-ani 0.6s 4;
+  color: #37debc;
+}
+
+#terminal .command {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: row;
+}
+
+#terminal .command.line .prompt {
+  padding-right: 0.5rem;
+}
+
+#terminal .command .prompt {
+  margin: 0;
+}
+
+#terminal .command .input {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  line-height: 1rem !important;
+}
+
+/* Tablet */
+@media only screen and (min-width: 550px) {
+  #terminal .logo {
+    font-size: 0.6rem;
+  }
+
+  #terminal * {
+    font-size: 1.5rem;
+    line-height: 1.7rem;
+  }
+
+  #terminal .logo {
+    font-size: 1.2rem;
+    line-height: 0.5rem;
+    -webkit-font-smooth: subpixel-antialiased;
+  }
+
+  #terminal .command {
+    margin-top: 2.5rem;
+  }
+}
+
+@keyframes power-ani {
+  0% {
+    color: #37debc;
+  }
+  50% {
+    color: #2778ae;
+  }
+  100% {
+    color: #37debc;
+  }
+}
